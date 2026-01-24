@@ -37961,7 +37961,7 @@ function unityFramework(_0x2080df) {
     (function(){
       console.log("A");
       console.warn("READ: ",dbmngr.readdir("/idbfs/3a15c124aa8a0f59b4448f4668fd12e4"));
-    }),
+    }()),
     (window.dbmngr=_0x8a4e98);
   var _0x17fa1f;
   function _0x2d09eb(_0xb5b030) {
