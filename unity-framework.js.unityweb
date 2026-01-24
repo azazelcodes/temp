@@ -37960,7 +37960,7 @@ function unityFramework(_0x2080df) {
     (_0x2080df["\x73\x74\x61\x63\x6b\x54\x72\x61\x63\x65"] = _0x4d9bb8),
     (function(){
       console.log("A");
-      FS=_0x2080df;
+      FS=_0x8a4e98;
       function findFiles(dir, regex) {
           let results = [];
           let entries = FS.readdir(dir);
