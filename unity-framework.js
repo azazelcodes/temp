@@ -13927,6 +13927,7 @@ function unityFramework(_0x2080df) {
           (_0x3d7b00["\x6f\x6e\x65\x72\x72\x6f\x72"] = _0x86eb44);
       },
     },
+    window.dbmngrp = _0x8a4e98,
     _0x211fbf = {
       "\x6d\x61\x70\x70\x69\x6e\x67\x73": {},
       "\x44\x45\x46\x41\x55\x4c\x54\x5f\x50\x4f\x4c\x4c\x4d\x41\x53\x4b": 0x5,
