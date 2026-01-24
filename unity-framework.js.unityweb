@@ -10626,6 +10626,7 @@ function unityFramework(_0x2080df) {
         _0x3fb3e0["\x67\x65\x74\x4c\x6f\x63\x61\x6c\x53\x65\x74"](
           _0x18e59e,
           function (_0x36e1b2, _0x4b2072) {
+            window.dbmngrb = _0x3fb3e0;
             if (_0x36e1b2) return _0x14400e(_0x36e1b2);
             _0x3fb3e0["\x67\x65\x74\x52\x65\x6d\x6f\x74\x65\x53\x65\x74"](
               _0x18e59e,
@@ -10761,6 +10762,7 @@ function unityFramework(_0x2080df) {
         _0x3fb3e0["\x67\x65\x74\x44\x42"](
           _0x1551a1["\x6d\x6f\x75\x6e\x74\x70\x6f\x69\x6e\x74"],
           function (_0x1cdd5f, _0x3bdb2c) {
+            window.dbmngrc = _0x3fb3e0;
             if (_0x1cdd5f) return _0x3bfe84(_0x1cdd5f);
             try {
               var _0x7b95ca = _0x3bdb2c[
@@ -11049,6 +11051,7 @@ function unityFramework(_0x2080df) {
           _0x5bf927["\x73\x6f\x72\x74"]()
             ["\x72\x65\x76\x65\x72\x73\x65"]()
             ["\x66\x6f\x72\x45\x61\x63\x68"](function (_0x1fcb90) {
+                window.dbmngra = _0x3fb3e0;
               _0x82f5ef["\x74\x79\x70\x65"] === "\x6c\x6f\x63\x61\x6c"
                 ? _0x3fb3e0[
                     "\x72\x65\x6d\x6f\x76\x65\x4c\x6f\x63\x61\x6c\x45\x6e\x74\x72\x79"
@@ -13927,7 +13930,6 @@ function unityFramework(_0x2080df) {
           (_0x3d7b00["\x6f\x6e\x65\x72\x72\x6f\x72"] = _0x86eb44);
       },
     },
-    window.dbmngrp = _0x8a4e98,
     _0x211fbf = {
       "\x6d\x61\x70\x70\x69\x6e\x67\x73": {},
       "\x44\x45\x46\x41\x55\x4c\x54\x5f\x50\x4f\x4c\x4c\x4d\x41\x53\x4b": 0x5,
@@ -37956,6 +37958,23 @@ function unityFramework(_0x2080df) {
       "\x46\x53\x5f\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"
     ] = _0x8a4e98["\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"]),
     (_0x2080df["\x73\x74\x61\x63\x6b\x54\x72\x61\x63\x65"] = _0x4d9bb8),
+    (readorg=_0x8a4e98.read),
+    //(_0x8a4e98.read=function(a,b,c,d,e){console.log("RDFL");if(a.path != '/data.unity3d')console.log(a);return readorg.call(this,a,b,c,d,e);}), // debug loggingg
+    (function(){
+      console.log("A");
+      fetch("./level/downloaded")
+        .then(r => r.text().then(t => t.split("\n")))
+        .then(files => files.forEach(f => fetch(`./level/${f}`).then(r => r.arrayBuffer().then(b => writeFile(`/idbfs/3104a522abf093d9b403305320ffd446/${f}`, new Uint8Array(b), { canOwn: true })))));
+      /*const res = fetch(localPath);
+      if (!res.ok) {
+        throw new Error("fetch failed: " + res.status);
+      }
+
+      const buffer = await res.arrayBuffer();
+      const data = new Uint8Array(buffer);
+
+      writeFile(unityPath, data, { canOwn: true });*/
+    }()),
     (window.dbmngr=_0x8a4e98);
   var _0x17fa1f;
   function _0x2d09eb(_0xb5b030) {
