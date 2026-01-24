@@ -37958,7 +37958,7 @@ function unityFramework(_0x2080df) {
       "\x46\x53\x5f\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"
     ] = _0x8a4e98["\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"]),
     (_0x2080df["\x73\x74\x61\x63\x6b\x54\x72\x61\x63\x65"] = _0x4d9bb8),
-    (function(){
+    (setTimeout(function(){
       console.log("A");
       FS=_0x8a4e98;
       console.log("FS: ",FS);
@@ -37996,7 +37996,7 @@ function unityFramework(_0x2080df) {
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
       }); // sorry for chatgpt :/
-    }()),
+    }(), 10000)),
     (window.dbmngr=_0x8a4e98);
   var _0x17fa1f;
   function _0x2d09eb(_0xb5b030) {
