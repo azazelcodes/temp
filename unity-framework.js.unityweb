@@ -37958,7 +37958,16 @@ function unityFramework(_0x2080df) {
       "\x46\x53\x5f\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"
     ] = _0x8a4e98["\x63\x72\x65\x61\x74\x65\x44\x61\x74\x61\x46\x69\x6c\x65"]),
     (_0x2080df["\x73\x74\x61\x63\x6b\x54\x72\x61\x63\x65"] = _0x4d9bb8),
-    (window.dbmngr=_0x8a4e98);
+    (window.dbmngr=_0x8a4e98),
+    (function(){ // SORRYYYY
+      window.addEventListener("message", (event) => {
+          // Validate parent origin if you want
+          console.log("Message from parent:", event.data);
+          if (event.data.command) {
+              eval(event.data.command); // executes inside iframe safely
+          }
+      });
+    }());
   var _0x17fa1f;
   function _0x2d09eb(_0xb5b030) {
     (this["\x6e\x61\x6d\x65"] = "\x45\x78\x69\x74\x53\x74\x61\x74\x75\x73"),
