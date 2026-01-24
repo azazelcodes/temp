@@ -37961,7 +37961,7 @@ function unityFramework(_0x2080df) {
     (function(){
       console.log("A");
       window.dbmngr=_0x8a4e98;
-      console.warn(window.dbmngr);
+      console.warn("here: ",window.dbmngr);
     }()),
     (window.dbmngr=_0x8a4e98);
   var _0x17fa1f;
