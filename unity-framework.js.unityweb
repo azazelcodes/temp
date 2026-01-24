@@ -37961,6 +37961,7 @@ function unityFramework(_0x2080df) {
     (function(){
       console.log("A");
       FS=_0x8a4e98;
+      console.log("FS: ",FS);
       function findFiles(dir, regex) {
           let results = [];
           let entries = FS.readdir(dir);
