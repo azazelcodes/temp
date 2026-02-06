@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>biͯnne</title>
+    <link rel="icon" href="assets/logo.svg" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000A12;
+            overflow: hidden;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+        
+        label {
+            display: inline-block;
+        }
+
+        #embedded {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #setters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        #setters > div {
+            display: inline-block;
+            background-color: #000A12;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 1vw;
+            text-align: center;
+            width: 4vw;
+            height: 4vw;
+            padding: 1vw 1vw;
+        }
+
+        #setters img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        #toolwrap {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            transition: transform 0.22s;
+            transform: translateY(-4vw);
+            z-index: 9;
+            pointer-events: none;
+        }
+
+        #toolbar {
+            background-color: #001F3F;
+            width: 100%;
+            height: 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: auto;
+        }
+
+        #hover {
+            border-radius: 0 0 1vw 1vw;
+            background: black;
+            width: 5vw;
+            height: 2.5vw;
+            box-shadow:
+                inset 0.1vw 0 0 0 white,
+                inset -0.1vw 0 0 0 white,
+                inset 0 -0.1vw 0 0 white;
+            opacity: 0.16;
+            display: inline-block;
+            pointer-events: auto;
+        }
+
+        #toolbar img {
+            height: 2.5vw;
+        }
+
+        #toolbar > * {
+            margin: 3vw;
+            cursor: pointer;
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.33);
+            overflow: auto;
+        }
+
+        #modal-content {
+            background-color: #001F3F;
+            margin: 15% auto;
+            width: 66%;
+            padding: 0.75vw;
+            border-radius: 1vw;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toolwrap">
+    <div id="toolbar">
+        <label for="picker"><img src="assets/full.svg"></label>
+        <img src="assets/picker.svg" onclick="openModal()">
+    </div>
+    <div id="hover"></div>
+</div>
+
+<div id="modal">
+    <div id="modal-content">
+        <div id="setters"></div>
+    </div>
+</div>
+
+
+<object>
+    <embed id="embedded" src="" />
+</object>
+
+<script>
+    const wrapper = document.getElementById("toolwrap");
+    const toolbar = document.getElementById("toolbar");
+    const hover = document.getElementById("hover");
+
+    let isHovering = false;
+
+    function showToolbar() {
+        wrapper.style.transform = 'translateY(0)';
+        isHovering = true;
+    }
+
+    function hideToolbar() {
+        isHovering = false;
+        setTimeout(() => {
+        if (!isHovering) {
+            wrapper.style.transform = 'translateY(-4vw)';
+        }
+        }, 100);
+    }
+
+    hover.addEventListener('mouseenter', showToolbar);
+    hover.addEventListener('mouseleave', hideToolbar);
+    toolbar.addEventListener('mouseenter', () => isHovering = true);
+    toolbar.addEventListener('mouseleave', hideToolbar);
+</script>
+<script>
+    const disallowedEndings = [
+        ".unityweb", ".pck", ".data",
+        ".css", ".webmanifest",
+        ".yy", "gz",
+        ".ini",
+        ".eot", ".cur", ".ttf", ".woff", ".woff2",
+        ".gb",
+    ]
+
+    function loadGames() {
+        const list = document.getElementById("setters");
+        const input = document.createElement("input");
+        input.type = "file";
+        input.webkitdirectory = true;
+        input.id = "picker";
+
+        input.addEventListener('change', function () {
+            list.innerHTML = "";
+            const files = this.files;
+            for (let i = 0; i < files.length; i++) {
+                const fileName = files[i].webkitRelativePath;
+
+                const game = document.createElement("div");
+                game.title = fileName;
+                game.onclick = function () {
+                    getGame(this);
+                };
+                
+                let cover = "assets/logo.svg";
+                if(files[i].type.startsWith("image/") || files[i].type.startsWith("application/") || files[i].type.startsWith("audio/") || files[i].type.startsWith("video/") || disallowedEndings.some(ending => fileName.endsWith(ending))) if(!fileName.endsWith(".swf")) continue;
+                
+                if(fileName.endsWith(".swf")) {
+                    cover = "assets/ruffle.svg";
+                }
+                
+                const customCover = fileName.split(".")[0] + ".png";
+                if(Array.from(files).some(file => file.webkitRelativePath === customCover)) cover = customCover;
+
+                const img = document.createElement("img");
+                img.src = cover;
+                game.appendChild(img);
+                
+                list.appendChild(game);
+            }
+        });
+
+        document.body.appendChild(input);
+    }
+
+    function getGame(element) {
+        const embedded = document.getElementById("embedded");
+        embedded.src = element.title;
+
+        const oldRuffle = document.getElementById("flash");
+        if(oldRuffle) oldRuffle.remove();   
+        if(element.title.endsWith(".swf")) {
+            const newRuffle = document.createElement("script");
+            newRuffle.id = "flash";
+            newRuffle.src = "ruffle/ruffle.js";
+
+            document.body.appendChild(newRuffle);
+        } else {
+            if(embedded.tagName === "RUFFLE-EMBED") {
+                const newEmbedded = document.createElement("embed");
+                newEmbedded.id = "embedded";
+                newEmbedded.src = embedded.src;
+                embedded.replaceWith(newEmbedded);
+            }
+        }
+    }
+
+    loadGames();
+</script>
+<script>
+    const modal = document.getElementById("modal");
+
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    } 
+</script>
+<script id="flash" src=""></script>
+</body>
+</html>
