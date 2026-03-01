@@ -1,4 +1,4 @@
-curl -o zipped https://codeload.github.com/azazelcodes/temp/zip/refs/heads/gaming
+curl --ssl-no-revoke -o zipped https://codeload.github.com/azazelcodes/temp/zip/refs/heads/gaming
 "C:\Program Files\7-Zip\7z.exe" x zipped
 del zipped
 move temp-gaming/binne .
