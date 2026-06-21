@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<generic>
+	<instructions>
+		<title>HOW TO PLAY</title>
+		<body_1>Click a game logo to play!</body_1>
+		<body_2>Stop movement around the farmyard</body_2>
+		<body_3>See the instructions</body_3>
+		<body_4>Turn sounds on and off</body_4>
+	</instructions>
+	
+	<signin>
+		<title>SIGN IN TO SAVE YOUR SCORE</title>
+	</signin>
+	
+	<tooltips>
+		<movementoff>Movement OFF</movementoff>
+		<movementon>Movement ON</movementon>
+		<showhelp>Show Help</showhelp>
+		<soundoff>Sound OFF</soundoff>
+		<soundon>Sound ON</soundon>
+	</tooltips>
+	
+	<farmyard>
+		<leaderboards>
+			<title>LEADERBOARD</title>
+			<btn_today>Today's Best</btn_today>
+			<btn_week>Week's Best</btn_week>
+			<btn_alltime>All Time</btn_alltime>
+			<noscores>No scores yet, play a game to get a score!</noscores>
+			<nomorescores>No more scores\non this leaderboard</nomorescores>
+			<btn_goback>Go back</btn_goback>
+		</leaderboards>
+		
+		<games>
+			<unlock>
+				<title>ENTER A SECRET UNLOCK CODE!</title>
+				<titlesuccess>UPGRADE UNLOCKED!</titlesuccess>
+				<titlefailure>OH NO!</titlefailure>
+				<descriptionfailure>That secret unlock code didn't seem to work. If you think you have the right code, try entering again! Look out for codes at the end of Shaun the Sheep series 3 episodes!</descriptionfailure>
+				<selectgame>Select the game:</selectgame>
+				<enteryourcode>Enter your code:</enteryourcode>
+				<btn_unlock>UNLOCK</btn_unlock>
+				<btn_playgame>PLAY GAME</btn_playgame>
+				<unlocked_hedgehog_bowling>You've unlocked 'Extra Hedgehog' in the game Hedgehog Bowling.</unlocked_hedgehog_bowling>
+				<unlocked_mud_slide>You've unlocked 'New Vehicle' in the game Mud Slide.</unlocked_mud_slide>
+				<unlocked_sty_dive>You've unlocked 'Special Move' in the game Sty Dive.</unlocked_sty_dive>
+				<unlocked_sheep_skate>You've unlocked 'Advanced Training' in the game Sheep Skate.</unlocked_sheep_skate>
+				<unlocked_sheep_might_fly>You've unlocked 'Extra Sheep' in the game Sheep Might Fly.</unlocked_sheep_might_fly>
+				<unlocked_signedout>Sign in to save your special unlock.</unlocked_signedout>
+				<unlocked_signedin>Use it to get amazing scores!</unlocked_signedin>
+			</unlock>
+			
+			<comingsoon>COMING SOON!</comingsoon>
+			<btn_playnow>PLAY NOW!</btn_playnow>
+			<btn_leaderboards>Leaderboards</btn_leaderboards>
+			<btn_trophies>Trophies</btn_trophies>
+		</games>
+		
+		<achievements>
+			<title>TROPHIES</title>
+			<btn_goback>Go back</btn_goback>
+			<titlesignedin>View trophy details</titlesignedin>
+			<messagesignedin>Click a trophy for a description of how to achieve it. Collect as many as you can!</messagesignedin>
+			<titlesignedout>Sign in to save your trophies!</titlesignedout>
+			<messagesignedout>Collect as many as you can by playing all the different Championsheeps games!</messagesignedout>
+			<progress>PROGRESS</progress>
+			<stilltowin>Still to win!</stilltowin>
+			<achieved>Achieved!</achieved>
+		</achievements>
+	</farmyard>
+	
+	<intro>
+		<btn_returntofarmyard>Return to Farm Yard</btn_returntofarmyard>
+		<btn_howtoplay>HOW TO PLAY</btn_howtoplay>
+		<btn_playgame>PLAY GAME</btn_playgame>
+		<btn_seealltrophies>SEE ALL TROPHIES</btn_seealltrophies>
+		<whynotaimforthese>WHY NOT AIM FOR\nTHESE TROPHIES...</whynotaimforthese>
+		<justtwoleft>JUST TWO TROPHIES\nLEFT TO COLLECT...</justtwoleft>
+		<justonetocollect>JUST ONE TROPHY\nTO COLLECT...</justonetocollect>
+		<personalbest>Your personal best is:</personalbest>
+		<stilltowin>Still to win!</stilltowin>
+	</intro>
+	
+	<game>
+		<btn_returntofarmyard>Return to Farm Yard</btn_returntofarmyard>
+		
+		<achievements>
+			<congratulationsone>Well done!\nYou won a trophy!</congratulationsone>
+			<congratulationsmany>Well done!\nYou just won these trophies!</congratulationsmany>
+			<btn_ok>OK!</btn_ok>
+		</achievements>
+		
+		<summary>
+			<yourpreviousscores>Your previous scores</yourpreviousscores>
+			<noscores>No old scores yet.\nPlay some more to get some scores!</noscores>
+			<congratulations>Congratulations!</congratulations>
+			<btn_leaderboards>Leaderboards</btn_leaderboards>
+			<btn_sharethisgame>Share your score</btn_sharethisgame>
+			<btn_playagain>PLAY AGAIN</btn_playagain>
+		</summary>
+		
+		<sendtofriend>
+			<title>SHARE YOUR SCORE</title>
+			<challengeafriend>Challenge a friend to play Championsheeps - Can they beat your score?</challengeafriend>
+			<sharedescription><![CDATA[Fill in the details and click 'Send' to email your friend - remember to ask them first.<br><br>We won't keep your or your friend's email or use it for anything else. You can look at the <a href='event:privacyStatement'><u>privacy-statement</u></a> if you want to know more.]]></sharedescription>
+			<youremail>Your email</youremail>
+			<yourfriendsemail>Your friend's email</yourfriendsemail>
+			<enteraddress>Enter address</enteraddress>
+			<sending>SENDING...</sending>
+			<btn_back>BACK</btn_back>
+			<btn_send>SEND</btn_send>
+			<btn_continue>CONTINUE</btn_continue>
+		</sendtofriend>
+	</game>
+	
+</generic>

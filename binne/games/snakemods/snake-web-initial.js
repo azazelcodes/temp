@@ -7,21 +7,21 @@ window.webSnake = window.webSnake ?? {};
 window.webSnake.logUrlChanges = false;
 
 //Disable analytics
-window.navigator.sendBeacon = function() {
+window.navigator.sendBeacon = function () {
   //Do nothing
-  window.webSnake.logUrlChanges && console.log('beacon disabled');
-}
+  window.webSnake.logUrlChanges && console.log("beacon disabled");
+};
 
 //Disable google logging
-window.google.log = function() {
+window.google.log = function () {
   //Do nothing
-  window.webSnake.logUrlChanges && console.log('google.log disabled');
-}
+  window.webSnake.logUrlChanges && console.log("google.log disabled");
+};
 
-window.google.logUrl = function() {
+window.google.logUrl = function () {
   //Do nothing
-  window.webSnake.logUrlChanges && console.log('google.logUrl disabled');
-}
+  window.webSnake.logUrlChanges && console.log("google.logUrl disabled");
+};
 
 //Update url redirects to be relative
 //Commented out as this might not be needed
@@ -37,10 +37,10 @@ window.webSnake.urlMap.forEach(rule => {
 window.oldXhrOpen = XMLHttpRequest.prototype.open;
 XMLHttpRequest.prototype.open = function () {
   let url = makeUrlAbsolute(arguments[1]);
-  
-  if(window.webSnake.blockedUrls.includes(url)) {
-    window.webSnake.logUrlChanges && console.log('Blocking url: ' + url);
-    throw new Error('Blocking url ' + url); //Slightly sketchy to error here as it may have side effects. This seems ok in practise
+
+  if (window.webSnake.blockedUrls.includes(url)) {
+    window.webSnake.logUrlChanges && console.log("Blocking url: " + url);
+    throw new Error("Blocking url " + url); //Slightly sketchy to error here as it may have side effects. This seems ok in practise
   }
 
   return oldXhrOpen.apply(this, arguments);
@@ -48,23 +48,22 @@ XMLHttpRequest.prototype.open = function () {
 
 window.oldFetch = window.fetch;
 
-window.fetch = function(url) {
-  if(typeof url === 'string') {
-    let mapping = window.webSnake.urlMap.find(m=>m.oldUrl === url);
+window.fetch = function (url) {
+  if (typeof url === "string") {
+    let mapping = window.webSnake.urlMap.find((m) => m.oldUrl === url);
 
-    if(mapping && mapping.newUrl) {
-      window.webSnake.logUrlChanges && console.log('Redirecting url: ' + url);
+    if (mapping && mapping.newUrl) {
+      window.webSnake.logUrlChanges && console.log("Redirecting url: " + url);
       arguments[0] = mapping.newUrl;
     }
   }
 
   return window.oldFetch(...arguments);
-}
+};
 
 function makeUrlAbsolute(url) {
-  //If url starts with / then add https://www.google.com
   if (/^\/[^\/]/.test(url)) {
-    url = "https://www.google.com" + url;
+    url = "http://localhost:8000/providers/google/" + url;
   }
   return url;
 }
@@ -73,23 +72,27 @@ function switchToMobile() {
   const currentGameVersion = getGameVersionFromUrl(); //defined in snake-mod-loader-web.js
 
   //Add is-mobile data attribute
-  let snakeContainer = document.getElementsByClassName('EjCLSb')[0];
-  snakeContainer.dataset.isMobile = '';
+  let snakeContainer = document.getElementsByClassName("EjCLSb")[0];
+  snakeContainer.dataset.isMobile = "";
 
   //Delete fullscreen button
-  let fullscreenButtonOld = document.querySelector('img[src$="fullscreen_white_24dp.png"]')
-  if(fullscreenButtonOld) {
+  let fullscreenButtonOld = document.querySelector(
+    'img[src$="fullscreen_white_24dp.png"]',
+  );
+  if (fullscreenButtonOld) {
     fullscreenButtonOld.remove();
   }
 
-  let fullscreenButtonsNew = document.querySelectorAll('div.EFcTud[jsaction="zeJAAd"]');
-  if(fullscreenButtonsNew.length > 0) {
-    [...fullscreenButtonsNew].forEach(button => button.remove());
+  let fullscreenButtonsNew = document.querySelectorAll(
+    'div.EFcTud[jsaction="zeJAAd"]',
+  );
+  if (fullscreenButtonsNew.length > 0) {
+    [...fullscreenButtonsNew].forEach((button) => button.remove());
   }
 
   //Add styles needed for mobile
   let css = `
-  
+
   /*Flexible size for snake container*/
   .EjCLSb {
     height: 100% !important;
@@ -108,7 +111,7 @@ function switchToMobile() {
 
   /*Change keys image to swipe image*/
   .rNjvu {
-    background-image: url(//www.google.com/logos/fnbx/snake_arcade/swipe.svg) !important
+    background-image: url(http://localhost:8000/providers/google/logos/fnbx/snake_arcade/swipe.svg) !important
   }
 
   /*Menu modal panels don't overlap edge*/
@@ -152,7 +155,7 @@ function switchToMobile() {
   }
   `;
 
-  if(currentGameVersion >= 5) {
+  if (currentGameVersion >= 5) {
     //Add in additional changes to the html/css that were introduced in version 5
     css += `
     /*hide icons on the menu buttons (play/settings/daily challenge) to save space on small screens*/
@@ -267,11 +270,12 @@ function switchToMobile() {
     `;
 
     //Add class so that game can adapt height depending on whether mobile touchpad is enabled
-    let divWithMainCanvas = document.getElementsByClassName('cer0Bd')[0].parentElement;
-    divWithMainCanvas.classList.add('azpHl');
+    let divWithMainCanvas =
+      document.getElementsByClassName("cer0Bd")[0].parentElement;
+    divWithMainCanvas.classList.add("azpHl");
 
     //Add stuff for the mobile touchpad (touchpad itself + the button to enable it)
-    let settingsOverlay = document.getElementsByClassName('wjOYOd')[0];
+    let settingsOverlay = document.getElementsByClassName("wjOYOd")[0];
 
     const touchpadHtml = `
     <div jsname="Ycs2rd" class="Oiw5Ib" jsaction="touchstart:G0IZGc;touchmove:G0IZGc;touchend:G0IZGc" data-ved="0ahUKEwjzppHUw_eFAxWPR_EDHQIwB6kQvNgMCAM">
@@ -331,8 +335,8 @@ function switchToMobile() {
     </div>
     `;
 
-    settingsOverlay.insertAdjacentHTML('beforebegin', touchpadHtml);
-    settingsOverlay.insertAdjacentHTML('afterbegin', enableTouchpadButton);
+    settingsOverlay.insertAdjacentHTML("beforebegin", touchpadHtml);
+    settingsOverlay.insertAdjacentHTML("afterbegin", enableTouchpadButton);
 
     //Rotate game to portrait for mobile
     const rotateGameMobileHtml = `
@@ -341,9 +345,9 @@ function switchToMobile() {
     </div>
     `;
 
-    snakeContainer.insertAdjacentHTML('beforeend', rotateGameMobileHtml);
+    snakeContainer.insertAdjacentHTML("beforeend", rotateGameMobileHtml);
   }
 
-  let styleElement = document.querySelector('style');
+  let styleElement = document.querySelector("style");
   styleElement.innerHTML = styleElement.innerHTML + css;
 }
